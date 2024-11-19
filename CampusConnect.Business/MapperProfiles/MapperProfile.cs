@@ -9,7 +9,6 @@ namespace CampusConnect.Business.MapperProfiles
 {
     public class MapperProfile : Profile
     {
-
         public MapperProfile()
         {
             CreateBusinessUnitMapping();
@@ -19,6 +18,5 @@ namespace CampusConnect.Business.MapperProfiles
         {
             CreateMap<DataAccess.DataModels.CampusConnect.DataAccess.DataModels.User, Entities.UserModel>();
         }
-
     }
 }

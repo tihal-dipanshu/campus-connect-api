@@ -10,12 +10,9 @@ namespace CampusConnect.DataAccess.IRepositories
 
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
-
         void Edit(T entity);
-
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
-
         T FirstOrDefault();
         T FirstOrDefault(Expression<Func<T, bool>> predicate);
         T FirstOrDefault(Expression<Func<T, bool>> predicate, bool local);
