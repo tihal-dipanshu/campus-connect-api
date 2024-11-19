@@ -1,10 +1,4 @@
-﻿using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CampusConnect.DataAccess.DataModels
 {
@@ -20,6 +14,7 @@ namespace CampusConnect.DataAccess.DataModels
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<EventCategory> EventCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,6 +52,30 @@ namespace CampusConnect.DataAccess.DataModels
 
                 entity.HasIndex(e => e.Username).IsUnique();
                 entity.HasIndex(e => e.Email).IsUnique();
+            });
+
+            modelBuilder.Entity<EventCategory>(entity =>
+            {
+                entity.HasKey(e => e.CategoryID);
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("GETDATE()");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("GETDATE()");
+
+                entity.HasIndex(e => e.CategoryName).IsUnique();
+
+                entity.HasMany(e => e.Events)
+                    .WithOne(e => e.Category)
+                    .HasForeignKey(e => e.CategoryID)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

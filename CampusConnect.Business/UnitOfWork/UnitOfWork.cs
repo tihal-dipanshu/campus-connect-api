@@ -1,4 +1,5 @@
-﻿using CampusConnect.DataAccess.DataModels;
+﻿using CampusConnect.Business.IService;
+using CampusConnect.DataAccess.DataModels;
 using CampusConnect.DataAccess.IRepositories;
 using CampusConnect.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace CampusConnect.Business.UnitOfWork
         private readonly CampusConnectContext _dbContext;
         private TransactionScope _transaction;
         public IUserRepository UserRepository { get; }
+        public IEventCategoriesRepository EventCategoriesRepository { get; }
 
         public UnitOfWork(CampusConnectContext context)
         {

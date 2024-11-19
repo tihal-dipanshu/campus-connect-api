@@ -1,9 +1,4 @@
-﻿using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.Business.IService
 {

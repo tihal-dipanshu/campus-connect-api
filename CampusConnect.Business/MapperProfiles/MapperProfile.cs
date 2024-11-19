@@ -16,7 +16,8 @@ namespace CampusConnect.Business.MapperProfiles
 
         private void CreateBusinessUnitMapping()
         {
-            CreateMap<DataAccess.DataModels.CampusConnect.DataAccess.DataModels.User, Entities.UserModel>();
+            CreateMap<DataAccess.DataModels.User, Entities.UserModel>();
+            CreateMap<DataAccess.DataModels.EventCategory, Entities.EventCategoryModel>();
         }
     }
 }

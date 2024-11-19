@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CampusConnect.DataAccess.IRepositories;
 using CampusConnect.DataAccess.DataModels;
-using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.DataAccess.Repositories
 {

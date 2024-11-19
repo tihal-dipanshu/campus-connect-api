@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CampusConnect.Business.IService;
-using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
+using CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.Business.Service
 {

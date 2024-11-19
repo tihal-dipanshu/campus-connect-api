@@ -16,6 +16,8 @@ builder.Services.AddDbContext<CampusConnectContext>(options =>
 // Register services
 builder.Services.AddScoped<IUsersService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IEventCategoriesService, EventCategoriesService>();
+builder.Services.AddScoped<IEventCategoriesRepository, EventCategoriesRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Add AutoMapper

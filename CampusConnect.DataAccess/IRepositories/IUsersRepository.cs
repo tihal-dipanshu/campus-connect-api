@@ -1,4 +1,4 @@
-﻿using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
+﻿using CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.DataAccess.IRepositories
 {
