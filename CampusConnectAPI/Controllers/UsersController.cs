@@ -1,6 +1,5 @@
 ﻿using CampusConnect.Business.IService;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CampusConnect.API.Controllers

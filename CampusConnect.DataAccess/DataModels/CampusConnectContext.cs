@@ -10,7 +10,6 @@ namespace CampusConnect.DataAccess.DataModels
 {
     public partial class CampusConnectContext : DbContext
     {
-
         public CampusConnectContext()
         {
         }

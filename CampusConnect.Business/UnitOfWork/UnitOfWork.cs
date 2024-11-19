@@ -15,15 +15,12 @@ namespace CampusConnect.Business.UnitOfWork
     {
         private readonly CampusConnectContext _dbContext;
         private TransactionScope _transaction;
-
         public IUserRepository UserRepository { get; }
 
         public UnitOfWork(CampusConnectContext context)
         {
             _dbContext = context;
-
             UserRepository = new UserRepository(context);
-
         }
 
         public int Save()
