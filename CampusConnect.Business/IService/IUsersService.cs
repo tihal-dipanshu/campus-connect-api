@@ -17,5 +17,6 @@ namespace CampusConnect.Business.IService
         Task<bool> IsUsernameTaken(string username);
         Task<bool> IsEmailTaken(string email);
         Task<IEnumerable<User>> SearchUsers(string searchTerm);
+        Task<User> LoginUser(string username, string password);
     }
 }

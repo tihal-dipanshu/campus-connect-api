@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CampusConnect.Business.Entities;
+using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.Business.MapperProfiles
 {
@@ -16,7 +13,8 @@ namespace CampusConnect.Business.MapperProfiles
 
         private void CreateBusinessUnitMapping()
         {
-            CreateMap<DataAccess.DataModels.CampusConnect.DataAccess.DataModels.User, Entities.UserModel>();
+            CreateMap<User, UserModel>();
+            CreateMap<LoginModel, User>();
         }
     }
 }

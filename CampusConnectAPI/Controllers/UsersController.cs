@@ -1,4 +1,5 @@
-﻿using CampusConnect.Business.IService;
+﻿using CampusConnect.Business.Entities;
+using CampusConnect.Business.IService;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace CampusConnect.API.Controllers
         {
             _usersService = usersService;
         }
-
+        
         [HttpGet("username/{username}")]
         public async Task<IActionResult> GetUserByUsername(string username)
         {
@@ -31,7 +32,7 @@ namespace CampusConnect.API.Controllers
             return Ok(users);
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> CreateUser([FromBody] User newUser)
         {
             if (newUser == null)
@@ -84,6 +85,25 @@ namespace CampusConnect.API.Controllers
         {
             var users = await _usersService.SearchUsers(searchTerm);
             return Ok(users);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
+        {
+            if (loginModel == null)
+                return BadRequest();
+
+            try
+            {
+                var user = await _usersService.LoginUser(loginModel.Username, loginModel.Password);
+                // Here you would typically generate a JWT token and return it
+                // For simplicity, we're just returning the user object
+                return Ok(user);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -71,5 +71,17 @@ namespace CampusConnect.Business.Service
             var users = await _unitOfWork.UserRepository.SearchUsers(searchTerm);
             return _mapper.Map<IEnumerable<User>>(users);
         }
+
+        public async Task<User> LoginUser(string username, string password)
+        {
+            var user = await _unitOfWork.UserRepository.GetUserByUsername(username);
+            if (user == null)
+                throw new InvalidOperationException("Invalid username or password");
+
+            if (!password.Equals(user.PasswordHash))
+                throw new InvalidOperationException("Invalid username or password");
+
+            return _mapper.Map<User>(user);
+        }
     }
 }
