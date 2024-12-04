@@ -67,6 +67,11 @@ namespace CampusConnect.DataAccess.Repositories
                 await Context.SaveChangesAsync();
             }
         }
+        
+        public async Task<User> GetUserById(int userId)
+        {
+            return await Context.Users.FirstOrDefaultAsync(u => u.UserID == userId);
+        }
 
         public async Task<IEnumerable<User>> SearchUsers(string searchTerm)
         {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CampusConnect.Business.DTO;
 using CampusConnect.Business.IService;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 
@@ -21,14 +22,38 @@ namespace CampusConnect.Business.Service
             return _mapper.Map<User>(user);
         }
 
-        public async Task<IEnumerable<User>> GetUsersByRole(string role)
+        public async Task<IEnumerable<UserDTO>> GetUsersByRole(string role)
         {
             var users = await _unitOfWork.UserRepository.GetUsersByRole(role);
-            return _mapper.Map<IEnumerable<User>>(users);
+            return _mapper.Map<IEnumerable<UserDTO>>(users);
+        }
+        
+        public async Task<User> GetUserById(int userId)
+        {
+            var user = await _unitOfWork.UserRepository.GetUserById(userId);
+            return _mapper.Map<User>(user);
         }
 
-        public async Task<User> CreateUser(User newUser)
+        // public async Task<User> CreateUser(CreateUserDTO newUser)
+        // {
+        //     var user = _mapper.Map<User>(newUser);
+        //     user.CreatedAt = DateTime.UtcNow;
+        //
+        //     await _unitOfWork.UserRepository.CreateUser(user);
+        //     _unitOfWork.Save();
+        //
+        //     return _mapper.Map<User>(user);
+        // }
+        
+        public async Task<User> CreateUser(CreateUserDTO newUser)
         {
+            var existingUser = await _unitOfWork.UserRepository.GetUserByUsername(newUser.Username);
+            if (existingUser != null)
+            {
+                throw new InvalidOperationException("Username already exists");
+            }
+
+            // Proceed with user creation if username is unique
             var user = _mapper.Map<User>(newUser);
             user.CreatedAt = DateTime.UtcNow;
 
@@ -38,9 +63,9 @@ namespace CampusConnect.Business.Service
             return _mapper.Map<User>(user);
         }
 
-        public async Task UpdateUser(int userId, User updateUser)
+        public async Task UpdateUser(UserAccountInfoDTO updateUser)
         {
-            var user = await _unitOfWork.UserRepository.GetUserByUsername(updateUser.Username);
+            var user = await _unitOfWork.UserRepository.GetUserById(updateUser.UserID);
             if (user == null)
                 throw new KeyNotFoundException("User not found");
 
@@ -66,10 +91,10 @@ namespace CampusConnect.Business.Service
             return await _unitOfWork.UserRepository.IsEmailTaken(email);
         }
 
-        public async Task<IEnumerable<User>> SearchUsers(string searchTerm)
+        public async Task<IEnumerable<UserDTO>> SearchUsers(string searchTerm)
         {
             var users = await _unitOfWork.UserRepository.SearchUsers(searchTerm);
-            return _mapper.Map<IEnumerable<User>>(users);
+            return _mapper.Map<IEnumerable<UserDTO>>(users);
         }
 
         public async Task<User> LoginUser(string username, string password)

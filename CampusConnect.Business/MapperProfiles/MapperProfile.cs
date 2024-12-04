@@ -23,6 +23,8 @@ namespace CampusConnect.Business.MapperProfiles
             //CreateMap<EventAttendee, EventAttendeeDTO>();
             CreateMap<User, UserDTO>();
             CreateMap<Event, EventDTO>();
+            CreateMap<UserAccountInfoDTO, User>();
+            CreateMap<CreateUserDTO, User>();
             
             CreateMap<EventAttendee, EventAttendeeDTO>()
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))

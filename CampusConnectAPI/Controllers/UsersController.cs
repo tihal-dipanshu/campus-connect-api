@@ -1,4 +1,5 @@
-﻿using CampusConnect.Business.Entities;
+﻿using CampusConnect.Business.DTO;
+using CampusConnect.Business.Entities;
 using CampusConnect.Business.IService;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 using Microsoft.AspNetCore.Mvc;
@@ -31,26 +32,38 @@ namespace CampusConnect.API.Controllers
             var users = await _usersService.GetUsersByRole(role);
             return Ok(users);
         }
-
-        [HttpPost("register")]
-        public async Task<IActionResult> CreateUser([FromBody] User newUser)
+        
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserById(int userId)
         {
-            if (newUser == null)
-                return BadRequest();
-
-            var createdUser = await _usersService.CreateUser(newUser);
-            return CreatedAtAction(nameof(GetUserByUsername), new { username = createdUser.Username }, createdUser);
+            var user = await _usersService.GetUserById(userId);
+            if (user == null)
+                return NotFound();
+            return Ok(user);
         }
 
-        [HttpPut("{userId}")]
-        public async Task<IActionResult> UpdateUser(int userId, [FromBody] User updateUser)
+        [HttpPost("register")]
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserDTO newUser)
+        {
+            try
+            {
+                var createdUser = await _usersService.CreateUser(newUser);
+                return CreatedAtAction(nameof(GetUserById), new { userId = createdUser.UserID }, createdUser);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser([FromBody] UserAccountInfoDTO updateUser)
         {
             if (updateUser == null)
                 return BadRequest();
 
             try
             {
-                await _usersService.UpdateUser(userId, updateUser);
+                await _usersService.UpdateUser(updateUser);
                 return NoContent();
             }
             catch (KeyNotFoundException)
