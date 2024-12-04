@@ -29,6 +29,9 @@ builder.Services.AddScoped<IEventAttendeeService, EventAttendeeService>();
 builder.Services.AddScoped<IEventAttendeeRepository, EventAttendeeRepository>();
 builder.Services.AddScoped<IEventCategoryService, EventCategoryService>();
 builder.Services.AddScoped<IEventCategoryRepository, EventCategoryRepository>();
+builder.Services.AddScoped<IVolunteerService, VolunteerService>();
+builder.Services.AddScoped<IVolunteerRepository, VolunteerRepository>();
+
 
 
 builder.Services.AddSignalR();
