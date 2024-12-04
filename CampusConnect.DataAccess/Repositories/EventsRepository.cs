@@ -81,6 +81,26 @@ namespace CampusConnect.DataAccess.Repositories
             // _context.Entry(eventToDelete).CurrentValues.SetValues(updateEvent);
             await _context.SaveChangesAsync();
         }
+        
+        // public async Task DecrementEventCapacity(int eventId)
+        // {
+        //     var eventItem = await _context.Events.FindAsync(eventId);
+        //     if (eventItem != null && eventItem.Capacity > 0)
+        //     {
+        //         eventItem.Capacity--;
+        //         await _context.SaveChangesAsync();
+        //     }
+        // }
+        //
+        // public async Task IncrementEventCapacity(int eventId)
+        // {
+        //     var eventItem = await _context.Events.FindAsync(eventId);
+        //     if (eventItem != null)
+        //     {
+        //         eventItem.Capacity++;
+        //         await _context.SaveChangesAsync();
+        //     }
+        // }
 
         public async Task<IEnumerable<Event>> GetEventsByCategory(int categoryId)
         {

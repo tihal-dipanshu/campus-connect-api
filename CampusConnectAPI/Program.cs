@@ -8,6 +8,7 @@ using CampusConnect.Business.IUnitOfWork;
 using CampusConnect.DataAccess.Repositories;
 using CampusConnect.Business.UnitOfWork;
 using CampusConnect.API.Hubs;
+using CampusConnect.Business.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +25,14 @@ builder.Services.AddScoped<IEventsRepository, EventsRepository>();
 builder.Services.AddScoped<IChatsService, ChatsService>();
 builder.Services.AddScoped<IChatsRepository, ChatsRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEventAttendeeService, EventAttendeeService>();
+builder.Services.AddScoped<IEventAttendeeRepository, EventAttendeeRepository>();
 
 builder.Services.AddSignalR();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 builder.Services.AddControllers();
 

@@ -11,6 +11,8 @@ namespace CampusConnect.DataAccess.IRepositories
         Task<Event> CreateEvent(Event newEvent);
         Task UpdateEvent(Event updateEvent);
         Task DeleteEvent(int eventId);
+        // Task DecrementEventCapacity(int eventId);
+        // Task IncrementEventCapacity(int eventId);
         Task<IEnumerable<Event>> GetEventsByCategory(int categoryId);
         Task<IEnumerable<Event>> SearchEvents(string searchTerm);
     }

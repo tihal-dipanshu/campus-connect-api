@@ -20,6 +20,13 @@ namespace CampusConnect.Business.MapperProfiles
             CreateMap<Event, EventModel>();
             CreateMap<ChatMessage, ChatMessageModel>();
             CreateMap<GroupChat, GroupChatModel>();
+            //CreateMap<EventAttendee, EventAttendeeDTO>();
+            CreateMap<User, UserDTO>();
+            CreateMap<Event, EventDTO>();
+            
+            CreateMap<EventAttendee, EventAttendeeDTO>()
+                .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.Event, opt => opt.MapFrom(src => src.Event));
             
             CreateMap<CreateEventDTO, Event>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
