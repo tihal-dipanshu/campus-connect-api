@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CampusConnect.DataAccess.DataModels
@@ -21,6 +22,15 @@ namespace CampusConnect.DataAccess.DataModels
             public string UserRole { get; set; }
             public DateTime CreatedAt { get; set; }
             
+            [JsonIgnore]
+            public virtual ICollection<EventAttendee> EventAttendees { get; set; }
+            [JsonIgnore]
+            public virtual ICollection<EventOrganizer> OrganizedEvents { get; set; }
+            [JsonIgnore]
+            public virtual ICollection<Volunteer> VolunteeredEvents { get; set; }
+            [JsonIgnore]
+            public virtual ICollection<ChatMessage> ChatMessages { get; set; }
+
         }
     }
 }

@@ -11,6 +11,7 @@ namespace CampusConnect.Business.IUnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IUserRepository UserRepository { get; }
+        IChatsRepository ChatsRepository { get; }
 
         int Save();
         new void Dispose();

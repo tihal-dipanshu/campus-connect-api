@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CampusConnect.Business.Entities;
+using CampusConnect.DataAccess.DataModels;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 
 namespace CampusConnect.Business.MapperProfiles
@@ -15,6 +16,9 @@ namespace CampusConnect.Business.MapperProfiles
         {
             CreateMap<User, UserModel>();
             CreateMap<LoginModel, User>();
+            CreateMap<Event, EventModel>();
+            CreateMap<ChatMessage, ChatMessageModel>();
+            CreateMap<GroupChat, GroupChatModel>();
         }
     }
 }

@@ -16,11 +16,14 @@ namespace CampusConnect.Business.UnitOfWork
         private readonly CampusConnectContext _dbContext;
         private TransactionScope _transaction;
         public IUserRepository UserRepository { get; }
+        // public IChatsRepository ChatsRepository { get; }
+        public IChatsRepository ChatsRepository { get; private set; }
 
         public UnitOfWork(CampusConnectContext context)
         {
             _dbContext = context;
             UserRepository = new UserRepository(context);
+            ChatsRepository = new ChatsRepository(context);
         }
 
         public int Save()
