@@ -51,6 +51,7 @@ namespace CampusConnect.DataAccess.DataModels
                 entity.Property(e => e.EndDateTime).IsRequired();
                 entity.Property(e => e.Location).HasMaxLength(255);
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasDefaultValueSql("GETDATE()");
+                entity.Property(e=>e.IsActive).HasDefaultValue(1);
                 entity.HasOne(d => d.Category).WithMany(p => p.Events).HasForeignKey(d => d.CategoryID);
             });
 

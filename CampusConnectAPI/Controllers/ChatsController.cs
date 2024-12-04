@@ -53,11 +53,11 @@ namespace CampusConnect.API.Controllers
             return Ok(chat);
         }
         
-        [HttpPost("event/{eventId}")]
-        public async Task<IActionResult> CreateChatForEvent(int eventId)
-        {
-            var chat = await _chatsService.CreateChatForEvent(eventId);
-            return CreatedAtAction(nameof(GetChatByEventId), new { eventId = chat.EventID }, chat);
-        }
+        // [HttpPost("event/{eventId}")]
+        // public async Task<IActionResult> CreateChatForEvent(int eventId)
+        // {
+        //     var chat = await _chatsService.CreateChatForEvent(eventId);
+        //     return CreatedAtAction(nameof(GetChatByEventId), new { eventId = chat.EventID }, chat);
+        // }
     }
 }

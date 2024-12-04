@@ -1,3 +1,4 @@
+using CampusConnect.Business.DTO;
 using CampusConnect.Business.IService;
 using CampusConnect.DataAccess.DataModels;
 using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
@@ -33,24 +34,24 @@ namespace CampusConnect.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent([FromBody] Event newEvent)
+        public async Task<IActionResult> CreateEvent([FromBody] CreateEventDTO createEventDTO)
         {
-            if (newEvent == null)
+            if (createEventDTO == null)
                 return BadRequest();
 
-            var createdEvent = await _eventsService.CreateEvent(newEvent);
+            var createdEvent = await _eventsService.CreateEvent(createEventDTO);
             return CreatedAtAction(nameof(GetEventById), new { eventId = createdEvent.EventID }, createdEvent);
         }
 
-        [HttpPut("{eventId}")]
-        public async Task<IActionResult> UpdateEvent(int eventId, [FromBody] Event updateEvent)
+        [HttpPut]
+        public async Task<IActionResult> UpdateEvent([FromBody] UpdateEventDTO updateEventDTO)
         {
-            if (updateEvent == null)
+            if (updateEventDTO == null)
                 return BadRequest();
 
             try
             {
-                await _eventsService.UpdateEvent(eventId, updateEvent);
+                await _eventsService.UpdateEvent(updateEventDTO);
                 return NoContent();
             }
             catch (KeyNotFoundException)

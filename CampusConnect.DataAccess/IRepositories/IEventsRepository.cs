@@ -9,7 +9,7 @@ namespace CampusConnect.DataAccess.IRepositories
         Task<IEnumerable<Event>> GetAllEvents();
         Task<Event> GetEventById(int eventId);
         Task<Event> CreateEvent(Event newEvent);
-        Task UpdateEvent(int eventId, Event updateEvent);
+        Task UpdateEvent(Event updateEvent);
         Task DeleteEvent(int eventId);
         Task<IEnumerable<Event>> GetEventsByCategory(int categoryId);
         Task<IEnumerable<Event>> SearchEvents(string searchTerm);

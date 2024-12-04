@@ -3,6 +3,7 @@ using CampusConnect.DataAccess.DataModels.CampusConnect.DataAccess.DataModels;
 using CampusConnect.DataAccess.DataModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CampusConnect.Business.DTO;
 
 namespace CampusConnect.Business.IService
 {
@@ -10,8 +11,8 @@ namespace CampusConnect.Business.IService
     {
         Task<IEnumerable<Event>> GetAllEvents();
         Task<Event> GetEventById(int eventId);
-        Task<Event> CreateEvent(Event newEvent);
-        Task UpdateEvent(int eventId, Event updateEvent);
+        Task<Event> CreateEvent(CreateEventDTO newEvent);
+        Task UpdateEvent(UpdateEventDTO updateEvent);
         Task DeleteEvent(int eventId);
         Task<IEnumerable<Event>> GetEventsByCategory(int categoryId);
         Task<IEnumerable<Event>> SearchEvents(string searchTerm);

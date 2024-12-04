@@ -15,6 +15,7 @@ namespace CampusConnect.DataAccess.DataModels
         public int CategoryID { get; set; }
         public int Capacity { get; set; }
         public DateTime CreatedAt { get; set; }
+        public int IsActive { get; set; }
         
         [JsonIgnore]
         public virtual EventCategory Category { get; set; }

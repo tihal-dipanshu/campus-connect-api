@@ -14,5 +14,6 @@ namespace CampusConnect.Business.Entities
         public int CategoryID { get; set; }
         public int Capacity { get; set; }
         public DateTime CreatedAt { get; set; }
+        //public int IsActive { get; set; }
     }
 }
