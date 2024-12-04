@@ -31,6 +31,8 @@ builder.Services.AddScoped<IEventCategoryService, EventCategoryService>();
 builder.Services.AddScoped<IEventCategoryRepository, EventCategoryRepository>();
 builder.Services.AddScoped<IVolunteerService, VolunteerService>();
 builder.Services.AddScoped<IVolunteerRepository, VolunteerRepository>();
+builder.Services.AddScoped<IEventOrganizerService, EventOrganizerService>();
+builder.Services.AddScoped<IEventOrganizerRepository, EventOrganizerRepository>();
 
 
 

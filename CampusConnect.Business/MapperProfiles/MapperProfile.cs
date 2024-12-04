@@ -30,6 +30,7 @@ namespace CampusConnect.Business.MapperProfiles
             CreateMap<Volunteer, VolunteerDTO>();
             CreateMap<VolunteerDTO, Volunteer>().ReverseMap();
             CreateMap<CreateVolunteerDTO, Volunteer>();
+            CreateMap<EventOrganizer, EventOrganizerDTO>();
             
             CreateMap<EventAttendee, EventAttendeeDTO>()
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
