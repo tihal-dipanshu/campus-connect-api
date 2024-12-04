@@ -64,6 +64,16 @@ namespace CampusConnect.Business.Service
             
             await _eventsRepository.UpdateEvent(existingEvent);
         }
+        
+        // public async Task DecrementEventCapacity(int eventId)
+        // {
+        //     await _eventsRepository.DecrementEventCapacity(eventId);
+        // }
+        
+        // public async Task IncrementEventCapacity(int eventId)
+        // {
+        //     await _eventsRepository.IncrementEventCapacity(eventId);
+        // }
 
         public async Task DeleteEvent(int eventId)
         {

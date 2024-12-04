@@ -10,6 +10,7 @@ namespace CampusConnect.DataAccess.IRepositories
         Task<bool> IsUsernameTaken(string username);
         Task<bool> IsEmailTaken(string email);
         Task<User> CreateUser(User user);
+        Task<User> GetUserById(int userId);
         Task UpdateUser(User user);
         Task DeleteUser(int userId);
         Task<IEnumerable<User>> SearchUsers(string searchTerm);
