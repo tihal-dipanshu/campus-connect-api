@@ -19,6 +19,7 @@ namespace CampusConnect.API.Controllers
             _chatsService = chatsService;
             _hubContext = hubContext;
         }
+        
 
         [HttpPost("send")]
         public async Task<IActionResult> SendMessage([FromBody] ChatMessageDTO message)
