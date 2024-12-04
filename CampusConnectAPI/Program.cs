@@ -27,6 +27,9 @@ builder.Services.AddScoped<IChatsRepository, ChatsRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEventAttendeeService, EventAttendeeService>();
 builder.Services.AddScoped<IEventAttendeeRepository, EventAttendeeRepository>();
+builder.Services.AddScoped<IEventCategoryService, EventCategoryService>();
+builder.Services.AddScoped<IEventCategoryRepository, EventCategoryRepository>();
+
 
 builder.Services.AddSignalR();
 
