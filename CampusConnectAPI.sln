@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusConnect.Common", "Cam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusConnect.DataAccess", "CampusConnect.DataAccess\CampusConnect.DataAccess.csproj", "{9CE82361-A558-4C29-8BA7-81AFC8717426}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentFiles", "DeploymentFiles", "{14CAF9B1-5DAE-4213-A4C2-014D4B7A212E}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
